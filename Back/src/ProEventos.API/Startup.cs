@@ -31,7 +31,7 @@ namespace ProEventos.API
         {
             services.AddDbContext<DataContext>( //faço a referência do BD
                 context => context.UseSqlite(Configuration.GetConnectionString("Default")) //coloco a string de conexão que
-                //estará configuarda no appsttingsDevelopment.json
+                //estará configurada no appsttingsDevelopment.json
             );
             services.AddControllers(); //arquitetura mvc //**
             services.AddSwaggerGen(c => //trabalha por meio de versão
