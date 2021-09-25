@@ -6,17 +6,19 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ProEventos.API.Data;
 
 namespace ProEventos.API
 {
     public class Startup
     {
-        // IConfiguration está sendo injetado
+        // IConfiguration está sendo injetado, ele acessa o appsettings
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,7 +29,10 @@ namespace ProEventos.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            services.AddDbContext<DataContext>( //faço a referência do BD
+                context => context.UseSqlite(Configuration.GetConnectionString("Default")) //coloco a string de conexão que
+                //estará configuarda no appsttingsDevelopment.json
+            );
             services.AddControllers(); //arquitetura mvc //**
             services.AddSwaggerGen(c => //trabalha por meio de versão
             {
