@@ -1,3 +1,11 @@
 
 
-<h1>Eventos - component</h1>
+<h1>Eventos:</h1>
+
+//for it do meu componente palestrante em lapestrantes.component.ts
+<div *ngFor="let evento of eventos" >
+
+    <p>{{ evento.local }}</p> //para verificar a grafia entrar no localhost:5001/api/evento
+    <p>{{ evento.dataEvento }}</p>
+
+</div>

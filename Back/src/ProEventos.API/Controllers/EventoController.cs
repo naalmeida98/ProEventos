@@ -27,7 +27,7 @@ namespace ProEventos.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public Evento GetById(int id) //retornar um array
+        public Evento GetById(int id) //retornar um objeto do array
         {
             return Context.Eventos.FirstOrDefault(evento => evento.EventoId == id); 
         }

@@ -34,6 +34,7 @@ namespace ProEventos.API
                 //estará configurada no appsttingsDevelopment.json
             );
             services.AddControllers(); //arquitetura mvc //**
+            services.AddCors();
             services.AddSwaggerGen(c => //trabalha por meio de versão
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProEventos.API", Version = "v1" });
@@ -56,6 +57,11 @@ namespace ProEventos.API
             app.UseRouting(); //**
 
             app.UseAuthorization();
+
+            app.UseCors(
+                //permite acesso a qualquer cabeçalho, qualquer método e origem
+                 acesso => acesso.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()
+            );
 
             app.UseEndpoints(endpoints => //**
             {
