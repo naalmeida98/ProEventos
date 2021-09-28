@@ -1,11 +1,59 @@
 
+<h1>Eventos</h1>
 
-<h1>Eventos:</h1>
+<hr>
 
-//for it do meu componente palestrante em lapestrantes.component.ts
-<div *ngFor="let evento of eventos" >
-
-    <p>{{ evento.local }}</p> //para verificar a grafia entrar no localhost:5001/api/evento
-    <p>{{ evento.dataEvento }}</p>
-
+<div class="form-inline">
+  <div class="form-group mb-2">
+      <label class="mr-2">Filtro:</label>
+      <input type="text"
+            class="form-control mr-2"
+            placeholder="buscar"
+            [(ngModel)] = "filtroLista">
+  </div>
 </div>
+<!--><h3>Filtro: {{filtroLista}} </h3> <!-->
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>
+        <button type="button" class="btn btn-outline-light btn-sm" (click)="clickImg()">
+          {{!openImg ? 'Exibir Imagem' : 'Ocultar Imagem'}}
+        </button>
+      </th>
+      <th>#</th>
+      <th>Tema</th>
+      <th>Local</th>
+      <th>Data</th>
+      <th>Qtd de pessoas</th>
+      <th>Lote</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="eventos" >
+    <tr *ngFor="let evento of eventos">
+      <td>
+        <img [collapse]="!openImg" [isAnimated]="true" src="/assets/{{evento.imagemURL}}" alt=""
+        [style.width.px]="widthImg"
+        [style.margin.px]="marginImg">
+
+      </td>
+      <td>{{ evento.eventoId }}</td>
+      <td>{{ evento.tema }}</td>
+      <td>{{ evento.dataEvento }}</td>
+      <td>{{ evento.local }}</td>
+      <td>{{ evento.qtdPessoas }}</td>
+      <td>{{ evento.lote }}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-lg mr-2">Editar</button>
+        <button type="button" class="btn btn-danger btn-lg">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+  <p *ngIf="!eventos.length">
+    Nenhum evento encontrado!!
+  </p>
+
+</table>
+
+

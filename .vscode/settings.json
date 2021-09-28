@@ -1,0 +1,24 @@
+{
+    "html-css-class-completion.enableEmmetSupport": true,
+    "html-css-class-completion.CSSLanguages": [
+
+        "css",
+        "sass",
+        "scss"
+    ],
+    "html-css-class-completion.HTMLLanguages": [
+    
+        "html",
+        "vue",
+        "razor",
+        "blade",
+        "handlebars",
+        "twig",
+        "django-html",
+        "php",
+        "markdown",
+        "erb",
+        "ejs",
+        "svelte"
+    ]
+}
